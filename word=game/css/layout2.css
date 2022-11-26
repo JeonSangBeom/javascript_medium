@@ -1,0 +1,9 @@
+body { background: #ddd; }
+
+body .wrap { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+
+body .wrap h1 { font-size: 50px; font-weight: 700; margin: 100px 0; }
+
+body .wrap #inputBox { padding: 50px; }
+
+body .wrap #inputBox #typing { padding: 40px; border: 4px solid; font-size: 20px; }

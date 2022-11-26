@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="" id="input01" /><span>+</span>
+    <input type="text" name="" id="input02" />
+    <button id="plusBtn">=</button>
+    <input type="text" name="" id="resultTxt" />
+  </body>
+  <script>
+    // const result = num01 + num02;
+    // const document ={
+    //     querySelector:function(domObject){
+    //         return findDomObject
+    //         domObject를 찾아서 리턴해주기
+    //     }
+    // } // 함수를 가두는 방법 document.querySelector(); 다큐멘터리 안에 있는 쿼리를 찾아 내면 이런 식으로 되어 있을 것이다
+    //특정 개체(다큐멘터리)안에 만들어진 함수(쿼리) (메서드)
+    //특정 객체가 가지는 변수를 속성이라고 부른다
+    //객체는 메서드와 속성을 정의해놓은 설명서
+
+    // console.log(document.characterSet);
+    // console.log(document.querySelector("#input01").value);
+    // const input01 = document.querySelector("#input01");
+    // console.log(input01.value);//위와 동일
+
+    const input01 = document.querySelector("#input01");
+    const input02 = document.querySelector("#input02");
+    const plusBtn = document.querySelector("#plusBtn");
+    const resultTxt = document.querySelector("#resultTxt");
+    // plusBtn.addEventListener("이벤트 종류",2)
+    plusBtn.addEventListener("click", function () {
+      //console.log("click");
+      //   input01.value(읽기도 쓰기도 가능); 값을 가져올때
+      //   console.log(input01.value);
+      //   const num01 = parseInt(input01.value, 10);
+      //   const num02 = parseInt(input02.value, 10);
+
+      const num01 = Number(input01.value);
+      const num02 = Number(input02.value);
+      //   console.log(typeof num01); //typeof 넘겨받은 변수
+      resultTxt.value = add(num01 + num02);
+    });
+    function add(num01 = 0, num02 = 0) {
+      // 디폴트 값을 넣어 두면 add()안에 하나만 써도 nan이라는 에러가 발생하지 않는다
+      return num01 + num02;
+    }
+    const result = add(46848, 3434);
+    console.log(result);
+  </script>
+</html>

@@ -1,0 +1,26 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-size: 32px;
+    margin: 100px 0;
+  }
+  #com {
+    margin-bottom: 50px;
+    ul {
+      display: flex;
+    }
+  }
+  #player {
+    ul {
+      display: flex;
+      li {
+        margin: 0 10px;
+        img {
+          width: 80px;
+        }
+      }
+    }
+  }
+}

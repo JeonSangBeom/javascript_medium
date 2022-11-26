@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROCK-PAPER-SCISSORS</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>ROCK-PAPER-SCISSORS</h1>
+      <div id="com">
+        <ul>
+          <li><img src="../images/rock.svg" alt="" /></li>
+          <li><img src="../images/paper.svg" alt="" /></li>
+          <li><img src="../images/scissors.svg" alt="" /></li>
+        </ul>
+      </div>
+      <div id="player">
+        <ul>
+          <li><img src="../images/rock.svg" alt="" /></li>
+          <li><img src="../images/paper.svg" alt="" /></li>
+          <li><img src="../images/scissors.svg" alt="" /></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    const tempArray = [1, 2, 3, 4, 5];
+    console.log(tempArray);
+    let sel = 0;
+    const comList = document.querySelectorAll("#com ul li"); // 배열처럼 생겨먹은 유사 배열  NodeList
+    for (let i = 0; i < comList.length; i++) {
+      comList[i].style.display = "none";
+    }
+    comList[sel].style.display = "block";
+    console.log(comList);
+  </script>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kakao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/fancybox.css" />
+    <script src="../js/gsap/gsap.min.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/hangul-tools.js"></script>
+    <script src="../js/fancybox.umd.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>
+        <span class="main">KAKAO <strong>IMAGE SEARCH</strong></span>
+      </h1>
+      <!-- <div id="suggestWord"></div> -->
+      <div id="writtenWord">
+        <ul></ul>
+      </div>
+      <div id="thumbnails">
+        <ul></ul>
+      </div>
+      <div class="inputBox"><input type="text" id="word" /></div>
+    </div>
+  </body>
+  <script>
+    const thumbnailList = document.querySelector("#thumbnails ul");
+    const word = document.querySelector("#word");
+    const writtenWord = document.querySelector("#writtenWord ul");
+    let writtenWordArray = [];
+    let writtenOutput = "";
+    if (JSON.parse(localStorage.getItem("recentSearchWord")) !== null) {
+      writtenWordArray = JSON.parse(localStorage.getItem("recentSearchWord"));
+      writtenWordArray.forEach(function (item, index) {
+        writtenOutput += `<li>#${item}</li>`;
+      });
+    }
+    writtenWord.innerHTML = writtenOutput;
+    word.addEventListener("keyup", function (e) {
+      if (e.keyCode === 13 || e.key === "Enter") {
+        axios
+          .get(`https://dapi.kakao.com/v2/search/image?query=${word.value}&size=48`, {
+            headers: {
+              Authorization: "KakaoAK b67db6570174a01cf8ad812b3380e0e0",
+            },
+          })
+          .then(function (res) {
+            console.log(res.data);
+            const documents = res.data.documents;
+            let output = "";
+            thumbnailList.innerHTML = "";
+            documents.forEach(function (item, index) {
+              output += `<li><a href="${item.image_url}" data-fancybox="gallery"
+                data-caption="${item.thumbnail_url}"><img src="${item.thumbnail_url}" ></a></li>`;
+            });
+            thumbnailList.innerHTML = output;
+            gsap.from("#thumbnails li", { scale: 0, duration: 0.5, stagger: 0.02 });
+
+            //writtenWord ul에 밀어넣기...
+            if (!writtenWordArray.includes(word.value)) {
+              writtenWordArray.push(word.value);
+              console.log(writtenWordArray);
+              localStorage.setItem("recentSearchWord", JSON.stringify(writtenWordArray));
+              let writtenOutput = "";
+              writtenWordArray.forEach(function (item, index) {
+                writtenOutput += `<li>#${item}</li>`;
+              });
+              writtenWord.innerHTML = writtenOutput;
+            }
+            Fancybox.bind("[data-fancybox]", {
+              // Your options go here
+            });
+          });
+      }
+    });
+    /*
+    const writtenWordItems = document.querySelectorAll("#writtenWord ul li");
+    console.log(writtenWordItems);
+    writtenWordItems.forEach(function (item, index) {
+      item.addEventListener("click", function () {
+        console.log(item.textContent);
+      });
+    });
+    */
+    writtenWord.addEventListener("click", function (e) {
+      //console.log(writtenWord.innerHTML);
+      console.log(e.target.textContent);
+      if (e.target.nodeName === "LI") {
+        axios
+          .get(`https://dapi.kakao.com/v2/search/image?query=${e.target.textContent.substr(1)}&size=48`, {
+            headers: {
+              Authorization: "KakaoAK b67db6570174a01cf8ad812b3380e0e0",
+            },
+          })
+          .then(function (res) {
+            console.log(res.data);
+            const documents = res.data.documents;
+            let output = "";
+            thumbnailList.innerHTML = "";
+            documents.forEach(function (item, index) {
+              output += `<li><a href="${item.image_url}" data-fancybox="gallery"
+                data-caption="${item.thumbnail_url}"><img src="${item.thumbnail_url}" ></a></li>`;
+            });
+            thumbnailList.innerHTML = output;
+            gsap.from("#thumbnails li", { scale: 0, duration: 0.5, stagger: 0.02 });
+
+            //writtenWord ul에 밀어넣기...
+            //console.log(e.target, "===", e.target.nodeName);
+            Fancybox.bind("[data-fancybox]", {
+              // Your options go here
+            });
+          });
+      }
+    });
+  </script>
+</html>
+<!-- e.target.textContent.substr(1) -->

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <div><input type="text" id="userID" placeholder="ID를 입력해주세요." /></div>
+      <div><input type="password" id="userPW" placeholder="PASSWORD를 입력해주세요." /></div>
+      <button id="btnLogin">로그인</button>
+    </div>
+  </body>
+  <script>
+    const userID = document.querySelector("#userID");
+    const userPW = document.querySelector("#userPW");
+    const btnLogin = document.querySelector("#btnLogin");
+    window.prompt("나이를 적어주세요");
+    btnLogin.addEventListener("click", function () {
+      const id = userID.value;
+      const pw = userPW.value;
+      //console.log(id, "===", pw);
+      //둘다 맞을때 &&를 쓴다
+      if (id === "") {
+        alert("아이디를 입력해주세요");
+        userID.focus();
+        return;
+      }
+      if (pw === "") {
+        alert("비밀번호를 입력해주세요"); //경고창
+        userPW.focus(); //커서 이동
+        return;
+      }
+      if (id === "jjang051" && pw === "1234") {
+        console.log("로그인 성공");
+      } else {
+        alert("ID PW가 맞지 않습니다");
+        userID.value = "";
+        userPW.value = "";
+        userID.focus();
+      }
+    });
+  </script>
+</html>

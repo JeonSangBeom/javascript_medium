@@ -1,0 +1,1 @@
+body{height:3000px}.box{width:150px;height:150px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:#fff;margin-top:1500px}.box.red{background-color:#f00}.box.green{background-color:#0f0}.box.blue{background-color:#00f}
