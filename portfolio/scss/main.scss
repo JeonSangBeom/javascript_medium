@@ -30,12 +30,12 @@
       background-color: rgba(0, 0, 0, 0.8);
     }
     video {
-      width:100%;
+      width: 100%;
       height: 100%;
       object-fit: cover;
       position: absolute;
-      left:0;
-      top:0;
+      left: 0;
+      top: 0;
     }
   }
   .typing {
@@ -57,17 +57,12 @@
   }
 }
 
-
-
-
-
 .contentsWrap {
   position: relative;
   z-index: 2;
   background-color: #fff;
   padding: 100px;
   margin-top: 100vh;
-  
 }
 .section {
   min-height: 100vh;
@@ -78,7 +73,7 @@
     //color: #fff;
     position: relative;
     &:after {
-      content: '';
+      content: "";
       display: block;
       margin: 20px 0 50px;
       height: 1px;
@@ -92,7 +87,7 @@
   }
 }
 #profile h2:after {
-    background-color: #111;
+  background-color: #111;
 }
 #career h2:after {
   background-color: #111;
@@ -107,32 +102,33 @@
   background-color: #111;
 }
 
-
-#profile,#career,#contact {
-    ul {
-        li {
-            margin: 15px 0;
-            dl {
-                display: flex;
-                font-size: 48px;
-                font-weight: 500;
-                dt {
-                    // &:after {
-                    //   content: ":";
-                    //   display: inline-block;
-                    //   margin: 0 10px;
-                    // }
-                    .seperation {
-                        display: inline-block;
-                        margin: 0 20px;
-                    }
-                }
-                dd {
-                    font-weight: 700;
-                }
-            }
+#profile,
+#career,
+#contact {
+  ul {
+    li {
+      margin: 15px 0;
+      dl {
+        display: flex;
+        font-size: 48px;
+        font-weight: 500;
+        dt {
+          // &:after {
+          //   content: ":";
+          //   display: inline-block;
+          //   margin: 0 10px;
+          // }
+          .seperation {
+            display: inline-block;
+            margin: 0 20px;
+          }
         }
+        dd {
+          font-weight: 700;
+        }
+      }
     }
+  }
 }
 
 #career {
@@ -164,7 +160,7 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        width:100%;
+        width: 100%;
         transform: translate(-50%, -50%);
         dt {
           font-size: 42px;
@@ -183,13 +179,12 @@
           transform: rotate(-90deg);
           &.bg {
             stroke: #ccc;
-            
           }
           &.line {
             stroke: #111;
             position: absolute;
-            left:0;
-            top:0;
+            left: 0;
+            top: 0;
             stroke-dasharray: 1570;
             stroke-dashoffset: -850 !important;
             z-index: 2;
@@ -207,7 +202,7 @@
 }
 
 #portfolio {
-  padding-top: 100px !important;
+  padding: 100px !important;
   #filter {
     margin-top: 150px;
     ul {
@@ -224,10 +219,15 @@
         font-size: 18px;
         border-radius: 100px;
         margin: 0 10px;
+        cursor: pointer;
         overflow: hidden;
         &.on {
           background-color: #c92a2a;
           @include longShadow(darken(#c92a2a, 10), right, 50);
+        }
+        a {
+          width: 100%;
+          text-align: center;
         }
       }
     }
@@ -247,10 +247,10 @@
       padding: 20px;
       box-sizing: border-box;
       border: 1px solid #eee;
-      
+
       img {
         width: 100%;
-        max-height:300px;
+        max-height: 300px;
         object-fit: cover;
       }
       h2 {
@@ -269,7 +269,6 @@
       .desc {
         line-height: 1.5;
       }
-      
     }
   }
 
@@ -305,12 +304,13 @@
       .inputWrap {
         margin-bottom: 15px;
       }
-      input, textarea {
+      input,
+      textarea {
         height: 50px;
         background-color: #111;
-        width:100%;
-        color:#fff;
-        padding:0 15px;
+        width: 100%;
+        color: #fff;
+        padding: 0 15px;
         border-radius: 5px;
         border: none;
         outline: none;
@@ -326,9 +326,9 @@
         justify-content: flex-end;
         button {
           height: 50px;
-          width:120px;
+          width: 120px;
           background-color: rgb(0, 156, 177);
-          color:#fff;
+          color: #fff;
           border-radius: 5px;
         }
       }
@@ -336,18 +336,18 @@
   }
 }
 
-
 .fancybox__caption {
   display: flex;
   margin-top: 30px;
   align-items: center;
 }
 .fancybox__caption a {
-  padding:10px 20px;
+  padding: 10px 20px;
   background-color: rgb(2, 136, 224);
   margin-left: 30px;
   border-radius: 5px;
   overflow: hidden;
   display: inline-block;
-  @include longShadow(darken(rgb(2, 136, 224),10),right,30);
+  @include longShadow(darken(rgb(2, 136, 224), 10), right, 30);
 }
+

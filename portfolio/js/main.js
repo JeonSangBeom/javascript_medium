@@ -1,17 +1,11 @@
 //글쓰며 나타나기
 Splitting();
 const typed = new Typed(".typing .txt", {
-  strings: [
-    "앞으로 성장할 제 소개를 하겠습니다",
-    "but,try <strong>steadily</strong>",
-    "I want to be a <strong>full stack developer</strong>.",
-    "my name is <strong>Jeon sang beom</strong>",
-    "keep an <strong>eyes on me.</strong>",
-  ],
-  typeSpeed: 50,
-  startDelay: 1000,
+  strings: ["안녕하십니까", "지금부터 저에 대한 소개를 하도록 하겠습니다", "부족하지만 잘 지켜봐주시기 바랍니다", "scroll 사용"],
+  typeSpeed: 40,
+  startDelay: 800,
   backSpeed: 20,
-  backDelay: 3000,
+  backDelay: 2000,
   loop: true,
 });
 
@@ -22,7 +16,7 @@ gsap.defaults({
 });
 ScrollTrigger.defaults({
   // 확인하기
-  //markers: true,
+  // markers: true,
 });
 const introTL = gsap.timeline({
   scrollTrigger: {
@@ -229,39 +223,6 @@ $.ajax({
           stagger: {
             each: 0.1,
           },
-        });
-      const contactTL = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#contact",
-          start: "top top",
-          end: "bottom top",
-          pin: true,
-          scrub: 1,
-        },
-      });
-      contactTL
-        .from("#contact h2 .char", {
-          x: "+=100",
-          opacity: 0,
-          stagger: {
-            each: 0.1,
-          },
-        })
-        .from(CSSRulePlugin.getRule("#contact h2:after"), {
-          cssRule: { scaleX: 0 },
-          duration: 2,
-          ease: "power2",
-        })
-        .from("#contact ul .char", {
-          x: "+=100",
-          opacity: 0,
-          stagger: {
-            each: 0.1,
-          },
-        })
-        .from("#contact form", {
-          x: "+=100",
-          opacity: 0,
         });
     });
   },
